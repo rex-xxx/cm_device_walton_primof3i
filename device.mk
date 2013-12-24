@@ -1,3 +1,4 @@
+#
 # Copyright (C) 2010 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -11,21 +12,25 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
-#
-# This file is the build configuration for a full Android
-# build for r819 hardware. This cleanly combines a set of
-# device-specific aspects (drivers) with a device-agnostic
-# product configuration (apps).
 #
 
-$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
+PRODUCT_PROPERTY_OVERRIDES := \
+    ro.carrier=wifi-only
 
-$(call inherit-product, device/walton/primof3i/device.mk)
-$(call inherit-product, build/target/product/full.mk)
+PRODUCT_COPY_FILES := \
+    device/walton/primof3i/fstab:root/fstab \
+    device/walton/primof3i/init.rc:root/init.rc
 
-PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
-PRODUCT_NAME := full_primof3i
-PRODUCT_DEVICE := primof3i
-PRODUCT_BRAND := Walton
-PRODUCT_MODEL := Primo F3i
+# the actual meat of the device-specific product definition
+$(call inherit-product, device/walton/primof3i/device-common.mk)
+
+# inherit from the non-open-source side, if present
+$(call inherit-product, vendor/walton/primof3i/primof3i-vendor.mk)
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.carrier=wifi-only
+
+DEVICE_RESOLUTION := 480x854
+
+DEVICE_PACKAGE_OVERLAYS := \
+    device/walton/primof3i/overlay

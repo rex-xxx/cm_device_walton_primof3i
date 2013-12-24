@@ -13,6 +13,6 @@ $(call inherit-product, device/walton/primof3i/device_primof3i.mk)
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := primof3i
 PRODUCT_NAME := cm_primof3i
-PRODUCT_BRAND := walton
-PRODUCT_MODEL := primof3i
+PRODUCT_BRAND := WALTON
+PRODUCT_MODEL := Primo F3i
 PRODUCT_MANUFACTURER := walton
