@@ -1,1 +1,1 @@
-device_primof3i.mk
+./device_primof3i.mk

@@ -23,7 +23,7 @@
 USE_CAMERA_STUB := true
 
 # inherit from the proprietary version
--include vendor/walton/primof3i/BoardConfigCommon.mk
+-include device/walton/primof3i/BoardConfigCommon.mk
 -include vendor/walton/primof3i/BoardConfigVendor.mk
 
 TARGET_RECOVERY_FSTAB = device/walton/primof3i/recovery.fstab
